@@ -1,0 +1,204 @@
+/*Main colors
+-----------
+Light Drey: #F1F1F1
+Dark Grey: #DADADA
+Very light grey: #FAFAFA
+Blue: #507AA5*/
+
+*{
+  /*border: 1px solid red !important;*/
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+/*-----------PERSISTANT STYLING---------*/
+/*removes list style, padding and margin*/
+
+body{
+  margin: 0 25px 0 25px; /*creates the space between the browser window and the page start on right and left*/
+}
+
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  display: inline-block; /*display list elements in a horizontal line, used for: nav-menu list*/
+}
+
+/* TODO: Check to see if more of these are needed for firefox */
+/*Changes the color of the input text in forms*/
+input::-webkit-input-placeholder{
+  color: #000;
+}
+
+a{
+  text-decoration: none;
+  color: #000;
+  padding: 5px 15px 5px 15px;
+}
+
+/*---------MAIN CONTAINERS/ITEMS---------*/
+/*All containers will be flexbox*/
+.flex-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.flex-item{
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+/*-----------HEADER-----------*/
+/*This will be flexbox styling that i only want to apply to the header container. */
+.flex-header{
+  flex-wrap: nowrap; /*these should never stack, layout will be changed when an appropriate break point is reached*/
+  width: 100vw; /*insures the header stretches to fill the full viewport width*/
+  border-bottom: 1px solid #DADADA; /*creates border at the bottom of the header*/
+  padding: 20px 0 20px 0;
+  margin-bottom: 20px;
+}
+
+/*==========NAV============*/
+/*ul of nav items*/
+.flex-nav-menu{
+  display: flex; /*this is needed to center the items vertically*/
+  align-items: center; /*centers items vertically*/
+  font-size: 15px;
+  list-style: none;
+}
+
+.nav-sub-menu{
+  padding-bottom: 10px;
+  box-shadow: 1px 1px 1px #4f4f4f;
+}
+
+/*hover over first level list elements in nav bar*/
+.flex-nav-menu li a:hover{
+  color: #fff; /*text color when hovering*/
+  border-radius: 5px 5px 5px 5px; /*curve outline on hover*/
+  box-shadow: 1px 1px 1px #4f4f4f; /*shaddow around the elements in the nav bar when hovered over*/
+}
+
+/*keeps top a higlighted when hovering over sub menu*/
+.flex-nav-menu li:hover > a {
+  background-color: #507AA5;
+  color: #FFF;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px #4f4f4f;
+}
+
+/*first sub menu*/
+header ul ul{
+  display: none; /*dont display at first*/
+  position: absolute; /*this displays the menu over everything else instead of resizing the header*/
+  background-color: #507AA5;
+  border-radius: 0 5px 5px 5px;
+  left: auto;
+}
+
+/*First Dropdown*/
+header ul ul li{
+  display:list-item;
+  color: #fff;
+  padding: 5px 15px 5px 15px;
+}
+
+/* Display Dropdowns on Hover */
+header ul li:hover > ul{
+	display: inherit;
+  color: #000;
+}
+
+header ul li:hover{
+  background-color: #466A90;
+  cursor: pointer;
+}
+
+header ul ul ul li{
+  display: block;
+  background-color: #466A90;
+}
+
+.flex-nav-menu ul ul {
+  -webkit-border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  position: relative;
+  font-size: 10px;
+}
+
+
+/*=========SEARCH BAR=========*/
+
+/*container for whole search bar*/
+.flex-search-bar{
+  flex-grow: 1;  /*Make the search bar take up the remaining space*/
+  padding: 0 0 0 50px; /*left padding between bar and nav items, should never get closer than 50px*/
+  margin-right: 60px; /*moves form to the left 60 px to line up with the sumbmit button so the underlying form can be used*/
+}
+
+/*Input section*/
+.flex-search-input {
+  background-color: #FAFAFA; /*background color for the input section of the bar*/
+  height: 35px; /*height of the bar*/
+  padding: 0 10px 0 10px; /*padding between search bar text and actual bar border*/
+  border: 1px solid #DADADA; /*main bar border styling*/
+  border-radius: 5px 0 0 5px; /*Makes edges of main bar curved*/
+  float: right; /*push to right of page*/
+  width: 100%; /*have it take up all the space it can*/
+  max-width: 300px; /*should never be larger than 300px*/
+  min-width: 200px; /*should never be smaller than 200px*/
+}
+
+/*click on input section*/
+.flex-search-input:focus {
+  outline: none; /*removes the hilight bar around the form when clicked on*/
+}
+
+/*Button in the search bar*/
+.flex-search-submit {
+  position: absolute; /*keeps button from moving around and allows us to lay it over the form*/
+	right: 25px; /*brings button in 25 px to meet the form*/
+	top: 20px; /*brings button down 20 px to meet the form*/
+	width: 60px; /*adjusts buttons width to be the width it should take up on the form*/
+  height: 35px; /*adjusts buttons height to be the height of the form*/
+  padding: 0; /*removes padding*/
+  border: none; /*removes border, using the form border*/
+  border-radius: 0 5px 5px 0; /*curve just the right two edges of the search button to match the form*/
+	background: #507AA5; /*background color of button*/
+  color: #fff; /*text color of button*/
+}
+
+/*-------------MAIN SECTION----------*/
+/*Styling for main section holding content and sidebar.*/
+.flex-main{
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+
+/*==========CONTENT============*/
+/*This will be flexbox styling that i only want to apply to the main content container. */
+.flex-content{
+  width: 65vw;
+}
+
+/*============SIDEBAR===========*/
+/*This will be to maintain the space of the sidebar.*/
+.flex-side-bar{
+  right: 25vw; /*set right position*/
+  border-left: 1px solid #DADADA;
+  height: 30vw; /* TODO: remove, just for testing */
+}
+
+
+/*~~~~~~~~~~~~~~TEST~~~~~~~~~~~~~~~~*/
